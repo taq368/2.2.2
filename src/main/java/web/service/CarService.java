@@ -1,20 +1,25 @@
 package web.service;
 
+import org.springframework.stereotype.Component;
 import web.model.Car;
-
 import java.util.ArrayList;
 import java.util.List;
 
+@Component
 public class CarService {
+    private static List<Car> carList = new ArrayList<>();
+    static {
+        carList.add(new Car("Tayota", "Supra", 1980));
+        carList.add(new Car("BMW", "x3", 2010));
+        carList.add(new Car("Nisssan", "Skyline", 1994));
+        carList.add(new Car("Lambo", "Reventon", 2007));
+        carList.add(new Car("Honda", "Civic", 2004));
+    }
 
-    public List<Car> getAllCars() {
-        List<Car> cars = new ArrayList<>();
-        cars.add(new Car(1, "Jiga", 93));
-        cars.add(new Car(2, "Bugatti Veyron", 1200));
-        cars.add(new Car(3, "Tayota Supra", 1500));
-        cars.add(new Car(4, "Tayota AE86", 153));
-        cars.add(new Car(5, "Nissan Skyline r34", 600));
-        return cars;
+    public List<Car> getCarList(Integer count) {
+        if (count == null || count < 1 || count > 4) {
+            return carList;
+        }
+        return carList.subList(0, count);
     }
 }
-

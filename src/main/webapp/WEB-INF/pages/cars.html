@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <title>Car</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div>
+    <table border="1">
+        <tbody>
+            <th>Производитель</th><th>Модель</th><th>Год выпуска</th>
+            <th:block th:each="msg : ${messages}">
+            <tr>
+                <td th:utext="${msg.producer}"></td>
+                <td th:utext="${msg.model}"></td>
+                <td th:utext="${msg.yearOfRelease}"></td>
+            </tr>
+            </th:block>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
